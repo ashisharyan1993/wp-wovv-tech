@@ -32,4 +32,5 @@ locals {
   wp_user          = "admin"
   wp_password      = "Welcome-123"
   wp_mail          = "aryan67912@gmail.com"
+  wp_svc_name      = "wp-ecs-svc"
 }

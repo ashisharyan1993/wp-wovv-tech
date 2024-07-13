@@ -14,3 +14,14 @@ module "wordpress" {
   private_subnet   = module.vpc.private_subnet_id
   public_subnet    = module.vpc.public_subnet_id
 }
+
+data "aws_network_interface" "interface_tags" {
+  filter {
+    name   = "tag:aws:ecs:serviceName"
+    values = [local.wp_svc_name]
+  }
+}
+
+output "WP_public_ip" {
+    value = data.aws_network_interface.interface_tags.association[0].public_ip
+}
